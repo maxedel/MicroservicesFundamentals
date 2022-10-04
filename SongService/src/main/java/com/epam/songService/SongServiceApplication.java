@@ -1,13 +1,12 @@
-package com.epam.ms;
+package com.epam.songService;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MicroservicesFundamentalsApplication {
+public class SongServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MicroservicesFundamentalsApplication.class, args);
+		SpringApplication.run(SongServiceApplication.class, args);
 	}
-
 }

@@ -1,0 +1,2 @@
+INSERT INTO RESOURCES (id, audio) VALUES (1, 'USA');
+INSERT INTO RESOURCES (id, audio) VALUES (2, 'France');
