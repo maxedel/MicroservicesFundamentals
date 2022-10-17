@@ -1,8 +1,9 @@
-package com.epam.resourceService.entity;
+package com.epam.resourceProcessor.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 @Entity
 @Table(name = "RESOURCES")
 public class Resource {

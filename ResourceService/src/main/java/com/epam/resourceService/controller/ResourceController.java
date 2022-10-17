@@ -1,6 +1,7 @@
 package com.epam.resourceService.controller;
 
 import com.epam.resourceService.entity.Resource;
+import com.epam.resourceService.publisher.RabbitMQProducer;
 import com.epam.resourceService.service.ResourceService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,8 +15,12 @@ public class ResourceController {
 
 	private ResourceService resourceService;
 
-	public ResourceController(ResourceService resourceService) {
+	private RabbitMQProducer producer;
+
+	public ResourceController(ResourceService resourceService,
+							  RabbitMQProducer producer) {
 		this.resourceService = resourceService;
+		this.producer = producer;
 	}
 
 	@GetMapping
@@ -45,6 +50,7 @@ public class ResourceController {
 	public ResponseEntity<Long> createResource(@RequestBody Resource resource) {
 		try {
 			long id = resourceService.createResource(resource);
+			producer.sendMessage(resource);
 			return new ResponseEntity<>(id, HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
