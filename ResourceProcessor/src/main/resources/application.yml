@@ -7,7 +7,14 @@ spring:
     port: 5672
     username: guest
     password: guest
-
+  cloud:
+    stream:
+      bindings:
+        songMetadata-in-0:
+          destination: values-topic
+          group: processor
+        songMetadata-out-0:
+          destination: song-metadata-values-topic
 
 rabbitmq:
   queue:
