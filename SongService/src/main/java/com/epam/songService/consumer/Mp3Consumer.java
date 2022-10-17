@@ -5,15 +5,22 @@ import com.epam.songService.repository.SongRepo;
 import com.mpatric.mp3agic.ID3v1;
 import com.mpatric.mp3agic.Mp3File;
 import org.springframework.context.annotation.Bean;
+import org.springframework.retry.annotation.Backoff;
+import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Component;
 
+import java.net.SocketTimeoutException;
 import java.util.function.Consumer;
 
 @Component
 public class Mp3Consumer {
 
 	private SongRepo songRepo;
-
+	@Retryable(
+			value = {SocketTimeoutException.class},
+			maxAttempts = 2,
+			backoff = @Backoff(delay = 1000)
+	)
 	@Bean
 	public Consumer<Mp3File> onReceive() {
 		return (mp3file) -> {
