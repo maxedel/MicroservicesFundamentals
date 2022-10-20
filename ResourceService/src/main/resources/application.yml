@@ -2,6 +2,8 @@ server:
   port: 8080
 
 spring:
+  application:
+    name: resource-service
   rabbitmq:
     host: localhost
     port: 5672
@@ -16,3 +18,8 @@ rabbitmq:
     name: songs_exchange
   routing:
     key: songs_routing_key
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8083/eureka

@@ -5,6 +5,7 @@ import com.epam.songService.repository.SongRepo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SongService {
@@ -16,11 +17,11 @@ public class SongService {
 	}
 
 	public Song createSong(Song song) {
-		return songRepo.createSong(song);
+		return songRepo.save(song);
 	}
 
-	public List<Song> getSongById(Long id) {
-		return songRepo.getSongById(id);
+	public Song getSongById(Long id) {
+		return songRepo.findById(id).get();
 	}
 
 	public List<Long> deleteSongsByIds(List<Long> ids) {

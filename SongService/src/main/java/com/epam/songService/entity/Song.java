@@ -1,29 +1,23 @@
 package com.epam.songService.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "SONGS")
 public class Song {
 
+	@Id
+	private long id;
+	private String resourceId;
 	private String title;
 	private String artist;
 	private String album;
 	private String length;
-	private String resourceId;
 	private String year;
 
 	public Song() {
-	}
-
-	public Song(String title,
-				String artist,
-				String album,
-				String length,
-				String resourceId,
-				String year) {
-		this.title = title;
-		this.artist = artist;
-		this.album = album;
-		this.length = length;
-		this.resourceId = resourceId;
-		this.year = year;
 	}
 
 	public String getTitle() {
@@ -72,5 +66,13 @@ public class Song {
 
 	public void setYear(String year) {
 		this.year = year;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 }

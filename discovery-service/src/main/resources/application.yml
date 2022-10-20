@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: eureka-discovery-service
+
+server:
+  port: 8083
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    service-url:
+      defaultZone: http://localhost:8083/eureka
+
+ribbon:
+  eureka:
+    enabled: false
+  listOfServers: localhost:8081,localhost:8080,localhost:8084
+  ServerListRefreshInterval: 15000

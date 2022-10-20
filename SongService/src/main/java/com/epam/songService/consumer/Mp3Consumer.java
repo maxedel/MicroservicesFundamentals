@@ -32,7 +32,7 @@ public class Mp3Consumer {
 				String year = id3v1Tag.getYear();
 				String length = String.valueOf(mp3file.getLengthInSeconds());
 				String resourceId = id3v1Tag.getVersion();
-				songRepo.createSong(new Song(title, artist, album, length, resourceId, year));
+//				songRepo.save(new Song(title, artist, album, length, resourceId, year));
 			}
 		};
 	}
